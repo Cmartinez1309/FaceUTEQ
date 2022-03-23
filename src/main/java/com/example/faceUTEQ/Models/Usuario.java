@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
  * @author usuario
  */
 @Entity
-@Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "Correo"))
+@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "Correo"))
 public class Usuario {
 
     @Id
