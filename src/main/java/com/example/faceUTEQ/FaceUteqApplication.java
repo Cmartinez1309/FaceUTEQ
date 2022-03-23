@@ -10,4 +10,5 @@ public class FaceUteqApplication {
 		SpringApplication.run(FaceUteqApplication.class, args);
 	}
 
+        
 }
