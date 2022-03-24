@@ -5,19 +5,13 @@
  */
 package com.example.faceUTEQ.Models;
 
-import java.util.Collection;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,16 +22,21 @@ public class Amigos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id_usu;
+    private long Id_amig;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Id_usu")
+    @NotNull
+    private Long Id_envia;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Id_usu")
+    @NotNull
+    private Long Id_recibe;
 
     @NotEmpty
-    @NotNull(message = "Debes especificar el cooreo")
-    @Size(min = 1, message = "El correo no debe ser nulo")
-    private String Correo;
-
-    @NotEmpty
-    @NotNull(message = "Debes especificar la contrasena")
-    @Size(min = 1, max = 50, message = "La contrasena debe medir entre 1 y 50")
-    private String Contasena;
+    @NotNull(message = "No debe ser nulo")
+    @Size(min = 1, message = "No debe ser nulo")
+    private String Estatus;
 
 }

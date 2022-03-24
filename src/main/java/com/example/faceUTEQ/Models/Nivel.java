@@ -20,11 +20,11 @@ public class Nivel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_rol;
+    private Long Id_nivel;
 
     @NotEmpty
     @NotNull(message = "Debes especificar el nombre")
     @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
-    private String nombre;
+    private String Nombre;
 
 }
