@@ -5,17 +5,13 @@
  */
 package com.example.faceUTEQ.Models;
 
-import java.util.Collection;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -44,11 +40,41 @@ public class Usuario {
     @Size(min = 1, max = 50, message = "La contrasena debe medir entre 1 y 50")
     private String Contasena;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "usuario_roles",
-            joinColumns = @JoinColumn(name = "id_usu", referencedColumnName = "id_usu"),
-            inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
-    )
-    private Collection<Rol> roles;
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String role;
+
+    public long getId_usu() {
+        return Id_usu;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public String getContasena() {
+        return Contasena;
+    }
+
+    public void setId_usu(long Id_usu) {
+        this.Id_usu = Id_usu;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+
+    public void setContasena(String Contasena) {
+        this.Contasena = Contasena;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
 }

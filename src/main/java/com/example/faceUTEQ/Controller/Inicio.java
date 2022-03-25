@@ -5,10 +5,36 @@
  */
 package com.example.faceUTEQ.Controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
  *
  * @author usuario
  */
 public class Inicio {
-    
+
+    @GetMapping("/")
+    public String page() {
+        return "index";
+    }
+
+    @GetMapping("/admin")
+    public String Admin() {
+        return "admin";
+    }
+
+    @GetMapping("/estudiante")
+    public String Estudiante() {
+        return "estudiante";
+    }
+
+    @GetMapping("/profesor")
+    public String Profesor() {
+        return "profesor";
+    }
+
+    @GetMapping("/login")
+    public String Login() {
+        return "login";
+    }
 }
