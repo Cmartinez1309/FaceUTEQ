@@ -5,8 +5,10 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.IAmigosDao;
 import com.example.faceUTEQ.Models.Amigos;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -14,24 +16,27 @@ import java.util.List;
  */
 public class AmigosService implements IAmigosServiceImp {
 
+    private IAmigosDao amigosDao;
+
     @Override
+    @Transactional(readOnly = true)
     public List<Amigos> listarAmigos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return amigosDao.findAll();
     }
 
     @Override
     public void guardar(Amigos amigos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        amigosDao.save(amigos);
     }
 
     @Override
     public void eliminar(Amigos amigos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        amigosDao.delete(amigos);
     }
 
     @Override
     public Amigos encontrarAmigos(Amigos amigos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return amigosDao.findById(amigos.getId_amig()).orElse(null);
     }
 
 }

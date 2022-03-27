@@ -5,6 +5,7 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.IPerfilDao;
 import com.example.faceUTEQ.Models.Perfil;
 import java.util.List;
 
@@ -14,21 +15,24 @@ import java.util.List;
  */
 public class PerfilService implements IPerfilServiceImp {
 
+    private IPerfilDao iPerfilDao;
+    
     @Override
     public List<Perfil> listarPerfil() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return iPerfilDao.findAll();
     }
 
     @Override
     public void guardar(Perfil perfil) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        iPerfilDao.save(perfil);
     }
 
     @Override
     public void eliminar(Perfil perfil) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        iPerfilDao.delete(perfil);
     }
-
+    
+    //ni puta idea xd ... es que no tiene pk primaria 
     @Override
     public Perfil encontrarPerfil(Perfil perfil) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -5,6 +5,7 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.IPublicacionDao;
 import com.example.faceUTEQ.Models.Publicacion;
 import java.util.List;
 
@@ -14,24 +15,26 @@ import java.util.List;
  */
 public class PublicacionService implements IPublicacionServiceImp {
 
+    private IPublicacionDao publicacionDao;
+
     @Override
     public List<Publicacion> listarPublicacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return publicacionDao.findAll();
     }
 
     @Override
     public void guardar(Publicacion publicacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        publicacionDao.save(publicacion);
     }
 
     @Override
     public void eliminar(Publicacion publicacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        publicacionDao.delete(publicacion);
     }
 
     @Override
     public Publicacion encontrarPublicacion(Publicacion publicacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return publicacionDao.findById(publicacionDao.getId_pb()).orElse(null);
     }
 
 }

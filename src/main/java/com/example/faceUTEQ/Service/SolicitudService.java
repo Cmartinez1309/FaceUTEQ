@@ -5,6 +5,7 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.ISolicitudDao;
 import com.example.faceUTEQ.Models.Solicitud;
 import java.util.List;
 
@@ -14,24 +15,26 @@ import java.util.List;
  */
 public class SolicitudService implements ISolicitudServiceImp {
 
+    private ISolicitudDao solicitudDao;
+
     @Override
     public List<Solicitud> listarSolicitud() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return solicitudDao.findAll();
     }
 
     @Override
     public void guardar(Solicitud solicitud) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        solicitudDao.save(solicitud);
     }
 
     @Override
     public void eliminar(Solicitud solicitud) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        solicitudDao.delete(solicitud);
     }
 
     @Override
     public Solicitud encontrarSolicitud(Solicitud solicitud) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return solicitudDao.findById(solicitud.getId_soli()).orElse(null);
     }
 
 }

@@ -15,24 +15,26 @@ import java.util.List;
  */
 public class ComentariosService implements IComentariosServiceImp {
 
+    private IComentariosDao comentariosDao;
+
     @Override
     public List<Comentarios> listarComentarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return comentariosDao.findAll();
     }
 
     @Override
     public void guardar(Comentarios comentarios) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        comentariosDao.save(comentarios);
     }
 
     @Override
     public void eliminar(Comentarios comentarios) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        comentariosDao.delete(comentarios);
     }
 
     @Override
     public Comentarios encontrarComentarios(Comentarios comentarios) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return comentariosDao.findById(comentarios.getId_cmt()).orElse(null);
     }
 
 }

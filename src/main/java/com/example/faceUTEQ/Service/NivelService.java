@@ -5,6 +5,7 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.INivelDao;
 import com.example.faceUTEQ.Models.Nivel;
 import java.util.List;
 
@@ -14,24 +15,26 @@ import java.util.List;
  */
 public class NivelService implements INivelServiceImp {
 
+    private INivelDao nivelDao;
+
     @Override
     public List<Nivel> listarNivel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nivelDao.findAll();
     }
 
     @Override
     public void guardar(Nivel nivel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nivelDao.save(nivel);
     }
 
     @Override
     public void eliminar(Nivel nivel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nivelDao.delete(nivel);
     }
 
     @Override
     public Nivel encontrarNivel(Nivel nivel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nivelDao.findById(nivel.getId_nivel()).orElse(null);
     }
 
 }
