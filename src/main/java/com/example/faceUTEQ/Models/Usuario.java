@@ -79,4 +79,20 @@ public class Usuario {
         return role;
     }
 
+    public Usuario(long id_usu, String correo, String contasena, String role) {
+        this.id_usu = id_usu;
+        this.correo = correo;
+        this.contasena = contasena;
+        this.role = role;
+    }
+
+    public Usuario(String correo, String contasena, String role) {
+        this.correo = correo;
+        this.contasena = contasena;
+        this.role = role;
+    }
+    
+    public Usuario() {
+        super();
+    }
 }
