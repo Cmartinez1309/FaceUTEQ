@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IComentariosDao extends JpaRepository<Comentarios, Long> {
 
-    List<Comentarios> findByContenido_cmt(String Contenido_cmt);
+    //List<Comentarios> findByid_cmt(String id_cmt);
 }

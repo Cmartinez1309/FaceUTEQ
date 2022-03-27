@@ -32,9 +32,11 @@ public class PublicacionService implements IPublicacionServiceImp {
         publicacionDao.delete(publicacion);
     }
 
+    //aqui no se que pedo
     @Override
     public Publicacion encontrarPublicacion(Publicacion publicacion) {
-        return publicacionDao.findById(publicacionDao.getId_pb()).orElse(null);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 }

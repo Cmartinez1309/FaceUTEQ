@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ISolicitudDao extends JpaRepository<Solicitud, Long> {
 
-    List<Solicitud> findById_soli(String Id_soli);
+    //List<Solicitud> findById_soli(String Id_soli);
 }

@@ -5,5 +5,5 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPublicacionDao extends JpaRepository<Publicacion, Long> {
-     List<Publicacion> findById_pb (String Id_pb);
+     //List<Publicacion> findById_pb (String id_pb);
 }

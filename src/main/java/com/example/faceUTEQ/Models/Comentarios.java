@@ -21,44 +21,48 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "Comentarios")
 public class Comentarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_cmt;
+    private Long id_cmt;
 
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Contenido_cmt;
-    
+    private String contenido_cmt;
+
     @Column(name = "Fecha_cmt")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date Fecha_cmt;
+    private Date fecha_cmt;
 
     @PrePersist
     @PreUpdate
     public void prePersist() {
-        Fecha_cmt = new Date();
-        Fecha_actializa = new Date();
+        fecha_cmt = new Date();
+        fecha_actializa = new Date();
     }
 
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_usu")
     @NotNull
-    private long Id_usu;
+    private Usuario id_usu;
 
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_pb")
     @NotNull
-    private long Id_pb;
+    private Publicacion id_pb;
+
     @Column(name = "Fecha_actializa")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date Fecha_actializa;
+    private Date fecha_actializa;
     private String coment_id;
+
 }

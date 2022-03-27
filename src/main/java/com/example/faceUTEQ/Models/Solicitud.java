@@ -15,26 +15,29 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 @Entity
-@Table(name = "Solicitud")
+@Table(name = "solicitud")
 public class Solicitud {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_soli;
+    private Long id_soli;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Id_usu")
+    @JoinColumn(name = "Id_envia")
     @NotNull
-    private Long Id_envia;
+    private Usuario id_envia;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Id_usu")
+    @JoinColumn(name = "Id_recibe")
     @NotNull
-    private Long Id_recibe;
+    private Usuario id_recibe;
 
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
-    private String Estatus;
+    private String estatus;
+
 }

@@ -17,29 +17,30 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import lombok.Data;
 
 /**
  *
  * @author usuario
  */
+@Data
 @Entity
-@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "Correo"))
+@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id_usu;
+    private long id_usu;
 
     @NotEmpty
     @NotNull(message = "Debes especificar el cooreo")
     @Size(min = 1, message = "El correo no debe ser nulo")
-    private String Correo;
+    private String correo;
 
     @NotEmpty
     @NotNull(message = "Debes especificar la contrasena")
     @Size(min = 1, max = 50, message = "La contrasena debe medir entre 1 y 50")
-    private String Contasena;
+    private String contasena;
 
     @NotEmpty
     @NotNull(message = "Debes especificar el correo")
@@ -47,27 +48,27 @@ public class Usuario {
     private String role;
 
     public long getId_usu() {
-        return Id_usu;
+        return id_usu;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public String getContasena() {
-        return Contasena;
+        return contasena;
     }
 
     public void setId_usu(long Id_usu) {
-        this.Id_usu = Id_usu;
+        this.id_usu = Id_usu;
     }
 
     public void setCorreo(String Correo) {
-        this.Correo = Correo;
+        this.correo = Correo;
     }
 
     public void setContasena(String Contasena) {
-        this.Contasena = Contasena;
+        this.contasena = Contasena;
     }
 
     public void setRole(String role) {

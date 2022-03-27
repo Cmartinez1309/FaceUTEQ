@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface INivelDao extends JpaRepository<Nivel, Long> {
 
-    List<Nivel> findById_nivel(String Id_nivel);
+    //List<Nivel> findById_nivel(String Id_nivel);
 }

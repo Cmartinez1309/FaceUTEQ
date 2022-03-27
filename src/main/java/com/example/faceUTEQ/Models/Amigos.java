@@ -24,21 +24,18 @@ public class Amigos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id_amig;
+    private long id_amig;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Id_usu")
     @NotNull
-    private Long Id_envia;
+    private Long id_envia;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Id_usu")
     @NotNull
-    private Long Id_recibe;
+    private Long id_recibe;
 
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Estatus;
+    private String estatus;
+
 
 }

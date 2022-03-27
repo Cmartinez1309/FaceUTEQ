@@ -22,11 +22,13 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
 
 /**
  *
  * @author usuario
  */
+@Data
 @Entity
 @Table(name = "Perfil")
 public class Perfil {
@@ -38,43 +40,44 @@ public class Perfil {
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Nombre;
+    private String nombre;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Carrera;
+    private String carrera;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Prepa;
+    private String prepa;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Empresa;
+    private String empresa;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Nacionalidad;
+    private String nacionalidad;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Estado_civil;
+    private String estado_civil;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Gustos;
+    private String gustos;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Img_perfil;
+    private String img_perfil;
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_nivel")
     @NotNull
-    private Long Id_nivel;
+    private Nivel id_nivel;
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_usu")
+    @JoinColumn(name = "Id_usu")
     @NotNull
-    private long Id_usu;
+    private Usuario id_usu;
+
 }

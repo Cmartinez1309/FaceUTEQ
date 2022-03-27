@@ -25,7 +25,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "Publicacion")
 public class Publicacion {
@@ -33,36 +35,37 @@ public class Publicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_rol;
-    private Long Id_pb;
+    private Long id_pb;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Contenido;
+    private String contenido;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String Img_pb;
+    private String img_pb;
 
-    private Date Fecha_pb;
+    private Date fecha_pb;
 
     @PrePersist
     @PreUpdate
     public void prePersist() {
-        Fecha_pb = new Date();
-        Fecha_actializa = new Date();
+        fecha_pb = new Date();
+        fecha_actializa = new Date();
     }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_usu")
     @NotNull
 
-    private Long Id_usu;
+    private Usuario id_usu;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_nivel")
     @NotNull
 
-    private Long Id_nivel;
+    private Nivel id_nivel;
 
-    private Date Fecha_actializa;
+    private Date fecha_actializa;
+
 }

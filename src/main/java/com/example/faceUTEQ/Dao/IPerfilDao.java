@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPerfilDao extends JpaRepository<Perfil, Long> {
 
-    List<Perfil> findById_usu(String Id_usu);
+    //List<Perfil> findById_usu(String Id_usu);
 }
