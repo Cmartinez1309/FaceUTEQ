@@ -20,6 +20,9 @@
             <div class="col-md-8 col-12 offset-md-2">
                 <img class="img-error" th:src="@{/src/assets/images/samples/error-403.png}" alt="Not Found">
                 <div class="text-center">
+                    <h1 class="error-title"><span th:text="${error}"></span> - <span th:text="${status}"></span></h1>
+                    <span th:text="${message}">Message</span><br />
+                    <span th:text="${exception}">Trace </span><br />
                     <h4 th:text="${error}">Internal Server Error</h4>
                 </div>
                 <a th:href="@{/}" class="btn btn-lg btn-outline-primary mt-3">Ir la inicio</a>
