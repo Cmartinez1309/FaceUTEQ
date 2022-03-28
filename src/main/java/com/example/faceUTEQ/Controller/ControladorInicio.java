@@ -19,7 +19,10 @@ public class ControladorInicio {
     public String IniciarSesion() {
         return "auth-login";
     }
-
+ @GetMapping("/comentarios")
+    public String comentarios() {
+        return "comentarios";
+    }
 //   @GetMapping("/admin")
 //   public String Admin(Model modelo){
 //        modelo.addAttribute("usuarios", IUsuarioService.listarUsuarios());
