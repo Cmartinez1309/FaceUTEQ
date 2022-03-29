@@ -110,6 +110,9 @@
                         <div th:if="${param.error}">
                             <div class="alert alert-danger text-center">
                                 Credenciales invalidas
+                                <span th:text="${message}">Message</span><br />
+                                <span th:text="${exception}">Trace </span><br />
+                                <h4 th:text="${error}">Internal Server Error</h4>
                             </div>
                         </div>
                         <div th:if="${param.logout}">

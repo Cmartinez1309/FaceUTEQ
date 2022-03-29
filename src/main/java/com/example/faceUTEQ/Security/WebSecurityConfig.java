@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/profesor").hasAnyRole("PROFESOR")
                 .and()
                 .formLogin()                
-                .loginPage("/login")               
+                .loginPage("/login")     
                 .permitAll()
                 .and()
                 .logout()

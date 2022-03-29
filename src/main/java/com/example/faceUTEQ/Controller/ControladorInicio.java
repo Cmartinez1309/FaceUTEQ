@@ -3,23 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/springframework/Controller.java to edit this template
  */
 package com.example.faceUTEQ.Controller;
+
 ;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 @Controller
 public class ControladorInicio {
 
     @GetMapping("/")
     public String page() {
-        return "auth-login";
+         return "redirect:/estudiante/publicacion/";
     }
 
-    @GetMapping("/login")
-    public String IniciarSesion() {
-        return "auth-login";
-    }
- @GetMapping("/comentarios")
+    @GetMapping("/comentarios")
     public String comentarios() {
         return "comentarios";
     }
@@ -28,4 +27,24 @@ public class ControladorInicio {
 //        modelo.addAttribute("usuarios", IUsuarioService.listarUsuarios());
 //        return "admin";
 //   }
+
+    @GetMapping("/admin")
+    public String Admin() {
+        return "comentarios";
+    }
+
+    @GetMapping("/estudiante")
+    public String Estudiante() {
+        return "comentarios";
+    }
+
+    @GetMapping("/profesor")
+    public String Profesor() {
+        return "auth-login";
+    }
+
+    @GetMapping("/login")
+    public String Login() {
+         return "auth-login";
+    }
 }

@@ -34,7 +34,6 @@ public class Publicacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_rol;
     private Long id_pb;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")

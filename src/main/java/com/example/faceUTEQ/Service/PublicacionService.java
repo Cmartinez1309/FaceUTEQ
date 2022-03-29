@@ -8,6 +8,7 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IPublicacionDao;
 import com.example.faceUTEQ.Models.Publicacion;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PublicacionService implements IPublicacionServiceImp {
 
+    @Autowired
     private IPublicacionDao publicacionDao;
 
     @Override

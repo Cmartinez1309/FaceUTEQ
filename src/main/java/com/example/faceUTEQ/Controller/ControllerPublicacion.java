@@ -22,12 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ControllerPublicacion {
-    
-     @RequestMapping("publicacion/")
-    public String page(Model model) {
-        model.addAttribute("nombre", "Hola desde Controlador Publicacion");
-        return "index";
-    }
+   
 
     @Autowired
     private IPublicacionServiceImp iPublicacionService;
@@ -36,11 +31,11 @@ public class ControllerPublicacion {
    // private ICategoriaService categoriaService;
     
 
-    @GetMapping("index/publicacion/")
+    @GetMapping("estudiante/publicacion/")
     public String listaPublicacion(Model model) {
         List<Publicacion> publicacion = iPublicacionService.listarPublicacion();
-        model.addAttribute("publicacion", publicacion);
-        return "index/publicacion";
+        model.addAttribute("Publicacion", publicacion);
+        return "comentarios";
     }
 
     @GetMapping("index/agregarPublicacion/")
@@ -75,5 +70,10 @@ public class ControllerPublicacion {
     public String borrarPublicacion(Publicacion publicacion) {
         iPublicacionService.eliminar(publicacion);
         return "index/table-datatable";
+    }
+    @RequestMapping("estudiante/")
+    public String estudiante(Model model) {
+        model.addAttribute("nombre", "Hola desde Controlador Publicacion");
+       return "auth-login";
     }
 }
