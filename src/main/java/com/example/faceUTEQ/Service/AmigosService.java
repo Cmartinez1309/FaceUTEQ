@@ -8,12 +8,14 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IAmigosDao;
 import com.example.faceUTEQ.Models.Amigos;
 import java.util.List;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class AmigosService implements IAmigosServiceImp {
 
     private IAmigosDao amigosDao;

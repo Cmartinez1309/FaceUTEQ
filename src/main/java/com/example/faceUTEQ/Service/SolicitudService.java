@@ -8,11 +8,13 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.ISolicitudDao;
 import com.example.faceUTEQ.Models.Solicitud;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class SolicitudService implements ISolicitudServiceImp {
 
     private ISolicitudDao solicitudDao;

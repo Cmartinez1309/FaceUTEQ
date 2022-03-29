@@ -8,11 +8,13 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IPublicacionDao;
 import com.example.faceUTEQ.Models.Publicacion;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class PublicacionService implements IPublicacionServiceImp {
 
     private IPublicacionDao publicacionDao;

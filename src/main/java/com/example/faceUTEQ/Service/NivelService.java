@@ -8,11 +8,13 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.INivelDao;
 import com.example.faceUTEQ.Models.Nivel;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class NivelService implements INivelServiceImp {
 
     private INivelDao nivelDao;

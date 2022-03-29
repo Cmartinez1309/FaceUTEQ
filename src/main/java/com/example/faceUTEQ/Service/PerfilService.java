@@ -8,11 +8,13 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IPerfilDao;
 import com.example.faceUTEQ.Models.Perfil;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class PerfilService implements IPerfilServiceImp {
 
     private IPerfilDao iPerfilDao;

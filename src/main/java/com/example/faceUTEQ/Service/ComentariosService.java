@@ -8,11 +8,13 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IComentariosDao;
 import com.example.faceUTEQ.Models.Comentarios;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author usuario
  */
+@Service
 public class ComentariosService implements IComentariosServiceImp {
 
     private IComentariosDao comentariosDao;
