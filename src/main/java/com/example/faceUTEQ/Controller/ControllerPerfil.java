@@ -5,7 +5,9 @@
 package com.example.faceUTEQ.Controller;
 
 import com.example.faceUTEQ.Dao.IUsuarioDao;
+import com.example.faceUTEQ.Dao.IPerfilDao;
 import com.example.faceUTEQ.Models.Perfil;
+import com.example.faceUTEQ.Models.Publicacion;
 import com.example.faceUTEQ.Models.Usuario;
 import com.example.faceUTEQ.Service.IPerfilServiceImp;
 import com.example.faceUTEQ.Service.IUsuarioServiceImp;
@@ -44,9 +46,8 @@ public class ControllerPerfil {
     private IPerfilServiceImp iPerfilService;
     @Autowired
     private IUsuarioDao iUsuarioDao;
+  
 
-    // @Autowired
-    // private ICategoriaService categoriaService;
     @GetMapping("index/perfil/")
     public String listaPerfil(Model model) {
         List<Perfil> perfil = iPerfilService.listarPerfil();

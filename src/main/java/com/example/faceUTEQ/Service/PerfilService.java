@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PerfilService implements IPerfilServiceImp {
-    
+
     @Autowired
     private IPerfilDao iPerfilDao;
-    
+
     @Override
     public List<Perfil> listarPerfil() {
         return iPerfilDao.findAll();
@@ -30,13 +30,12 @@ public class PerfilService implements IPerfilServiceImp {
     public void guardar(Perfil perfil) {
         iPerfilDao.save(perfil);
     }
-    
+
     @Override
     public void eliminar(Perfil perfil) {
         iPerfilDao.delete(perfil);
     }
-    
-    //ni puta idea xd ... es que no tiene pk primaria 
+
     @Override
     public Perfil encontrarPerfil(Perfil perfil) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

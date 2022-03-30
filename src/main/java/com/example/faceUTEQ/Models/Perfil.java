@@ -35,51 +35,50 @@ public class Perfil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_rol;
+    public Long id_rol;
 
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String nombre;
+    public String nombre;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String carrera;
+    public String carrera;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String prepa;
+    public String prepa;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String empresa;
+    public String empresa;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String nacionalidad;
+    public String nacionalidad;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String estado_civil;
+    public String estado_civil;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String gustos;
+    public String gustos;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
-    private String img_perfil;
+    public String img_perfil;
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_nivel")
     @NotNull
-    private Nivel id_nivel;
+    public Nivel id_nivel;
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "Id_usu")
     @NotNull
-    private Usuario id_usu;
+    public Usuario id_usu;
 
-    
 
 }
