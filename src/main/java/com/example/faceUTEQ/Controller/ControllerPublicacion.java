@@ -31,7 +31,7 @@ public class ControllerPublicacion {
    // private ICategoriaService categoriaService;
     
 
-    @GetMapping("estudiante/publicacion/")
+    @GetMapping("/estudiante/publicacion/")
     public String listaPublicacion(Model model) {
         List<Publicacion> publicacion = iPublicacionService.listarPublicacion();
         model.addAttribute("Publicacion", publicacion);

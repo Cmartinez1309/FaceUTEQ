@@ -15,7 +15,7 @@ public class ControladorInicio {
 
     @GetMapping("/")
     public String page() {
-         return "redirect:/estudiante/publicacion/";
+         return "redirect:/login/";
     }
 
     @GetMapping("/comentarios")

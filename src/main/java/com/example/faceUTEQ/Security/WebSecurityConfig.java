@@ -25,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/profesor").hasAnyRole("PROFESOR")
                 .and()
                 .formLogin()                
-                .loginPage("/login")     
+                .loginPage("/login")  
+                .defaultSuccessUrl("/estudiante/publicacion/") 
                 .permitAll()
                 .and()
                 .logout()
@@ -33,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll().and().csrf().disable().cors();
     }
     
     @Bean

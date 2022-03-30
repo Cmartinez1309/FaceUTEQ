@@ -80,4 +80,6 @@ public class Perfil {
     @NotNull
     private Usuario id_usu;
 
+    
+
 }

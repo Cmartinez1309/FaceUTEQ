@@ -3,23 +3,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Mazer Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/src/assets/css/bootstrap.css}" >
+    <link rel="stylesheet" th:href="@{/src/assets/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/src/assets/vendors/bootstrap-icons/bootstrap-icons.css}">
     <link rel="stylesheet" th:href="@{/src/assets/css/app.css}">
     <link rel="stylesheet" th:href="@{/src/assets/css/pages/auth.css}">
     <link rel="stylesheet" th:href="@{/src/styles.css}" />
 </head>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1" id="logout">
             <div class="page-header">
                 <h3 class="reviews">Leave your comment</h3>
                 <div class="logout">
-                    <button class="btn btn-default btn-circle text-uppercase" type="button"
-                        onclick="$('#logout').hide(); $('#login').show()">
-                        <span class="glyphicon glyphicon-off"></span> Logout
-                    </button>
+                    <a th:href="@{/logout}">
+                        <button class="btn btn-default btn-circle text-uppercase" type="button">
+                            logout
+                        </button>
+                    </a>
+                    <a th:href="@{/index/perfil/}">
+                        <button class="btn btn-default btn-circle text-uppercase" type="button">
+                            Perfil
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="comment-tabs">

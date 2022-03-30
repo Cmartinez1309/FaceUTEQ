@@ -8,6 +8,7 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IPerfilDao;
 import com.example.faceUTEQ.Models.Perfil;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +17,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PerfilService implements IPerfilServiceImp {
-
+    
+    @Autowired
     private IPerfilDao iPerfilDao;
     
     @Override
@@ -28,7 +30,7 @@ public class PerfilService implements IPerfilServiceImp {
     public void guardar(Perfil perfil) {
         iPerfilDao.save(perfil);
     }
-
+    
     @Override
     public void eliminar(Perfil perfil) {
         iPerfilDao.delete(perfil);
