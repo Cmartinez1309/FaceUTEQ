@@ -9,6 +9,7 @@ import com.example.faceUTEQ.Dao.IComentariosDao;
 import com.example.faceUTEQ.Models.Comentarios;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -25,6 +26,7 @@ public class ComentariosService implements IComentariosServiceImp {
     }
 
     @Override
+    @Transactional
     public void guardar(Comentarios comentarios) {
         comentariosDao.save(comentarios);
     }

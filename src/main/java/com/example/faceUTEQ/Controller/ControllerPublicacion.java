@@ -38,7 +38,7 @@ public class ControllerPublicacion {
         return "comentarios";
     }
 
-    @GetMapping("index/agregarPublicacion/")
+    @GetMapping("/index/agregarPublicacion/")
     public String agregarPublicacionPage(Publicacion publicacion, Model model) {
       //  List<Categoria> categoria = categoriaService.listarCategoria();
       //  model.addAttribute("categoria2", categoria);

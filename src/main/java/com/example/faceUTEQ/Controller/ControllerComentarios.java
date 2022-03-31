@@ -43,7 +43,7 @@ public class ControllerComentarios {
         return "index/comentarios";
     }
 
-    @GetMapping("index/agregarComentarios/")
+    @GetMapping("index/agregarComentarios2/")
     public String agregarComentariosPage(Comentarios comentarios, Model model) {
        // List<Categoria> categoria = categoriaService.listarCategoria();
        // model.addAttribute("categoria2", categoria);
@@ -52,13 +52,8 @@ public class ControllerComentarios {
 
     @PostMapping("index/agregarComentarios/")
     public String agregarComentarios(@Valid Comentarios comentarios, Errors error,Model model) {
-        if (error.hasErrors()) {
-          //  List<Categoria> categoria = categoriaService.listarCategoria();
-          //  model.addAttribute("categoria2", categoria);
-            return "index/agregarComentarios";
-        }
         iComentariosService.guardar(comentarios);
-        return "redirect:/index/comentarios/";
+        return "/estudiante/publicacion/";
     }
 
     @GetMapping("/index/editarComentarios/{Id_cmt}")
