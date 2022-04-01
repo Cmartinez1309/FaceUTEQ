@@ -8,6 +8,7 @@ package com.example.faceUTEQ.Service;
 import com.example.faceUTEQ.Dao.IAmigosDao;
 import com.example.faceUTEQ.Models.Amigos;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AmigosService implements IAmigosServiceImp {
 
+    @Autowired
     private IAmigosDao amigosDao;
 
     @Override
