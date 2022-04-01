@@ -1,0 +1,162 @@
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mazer Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/src/assetsv2/assets/img/favicon/favicon.ico}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/fonts/boxicons.css}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/css/core.css}"
+        class="template-customizer-core-css}" />
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/css/theme-default.css}"
+        class="template-customizer-theme-css}" />
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/css/demo.css}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script th:src="@{/src/assetsv2/assets/vendor/js/helpers.js}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script th:src="@{/src/assetsv2/assets/js/config.js}"></script>
+    <link th:href="@{/src/styles.css}" rel="stylesheet" type="text/css" />
+</head>
+<!-- Small Modal -->
+
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img th:src="@{/assets/admin/assets/images/logo/logo.png}" alt="Logo"
+                                    srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+                             
+                        <li class="sidebar-item  ">
+                            <a th:href="@{/admin/}" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>Usuario</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a th:href="@{/admin/nivel/}" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>Nivel</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Tabla de datos
+                            </h3>
+                            <p class="text-subtitle text-muted">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            Producto
+                            <p class="text-subtitle text-muted"><a data-th-href="@{/admin/agregarProducto/}">Agregar</a></p>
+
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Costo</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Categoría</th>
+                                        <th>Estatus</th>
+                                        <th >Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-th-each="producto:${producto}">
+                                        <td data-th-text="${producto.id_prod}"></td>
+                                        <td data-th-text="${producto.nom_prod}"></td>
+                                        <td data-th-text="${producto.costo_prod}"></td>
+                                        <td data-th-text="${producto.precio_prod}"></td>
+                                        <td data-th-text="${producto.cantidad_prod}"></td>
+                                        <td data-th-text="${producto.id_cat.nom_cat}"></td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td><a class="badge bg-secondary" th:href="@{/admin/editarProducto/}+${producto.id_prod}">Editar</a></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Mazer</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                href="http://ahmadsaugi.com">A. Saugi</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script th:src="@{/assets/admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/assets/admin/assets/js/bootstrap.bundle.min.js}"></script>
+
+    <script th:src="@{/assets/admin/assets/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
+    <script th:src="@{/assets/admin/assets/js/main.js}"></script>
+</body>

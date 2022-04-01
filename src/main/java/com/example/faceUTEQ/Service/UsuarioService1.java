@@ -5,60 +5,42 @@
  */
 package com.example.faceUTEQ.Service;
 
+import com.example.faceUTEQ.Dao.IUsuarioDao;
 import com.example.faceUTEQ.Models.Usuario;
-import com.example.faceUTEQ.Service.UsuarioService1;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class UsuarioService1 implements UserDetails {
+@Service
+public class UsuarioService1 implements IUsuarioServiceImp {
 
-    private static final long serialVersionUID = 1L;
-    private final Usuario usuario;
+    @Autowired
+    private IUsuarioDao usuariodao;
 
-    public UsuarioService1(Usuario usuario) {
-        this.usuario = usuario;
+    @Override
+    @Transactional(readOnly = true)
+    public List<Usuario> listarUsuario() {
+        return usuariodao.findAll();
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(usuario.getRole()));
-        return authorities;
+    @Transactional
+    public void guardar(Usuario usuario) {
+        usuariodao.save(usuario);
     }
 
     @Override
-    public String getPassword() {
-        return usuario.getContasena();
+    @Transactional
+    public void eliminar(Usuario usuario) {
+        usuariodao.delete(usuario);
     }
 
     @Override
-    public String getUsername() {
-        return usuario.getCorreo();
-    }
+    @Transactional(readOnly = true)
+    public Usuario encontrarUsuario(Usuario usuario) {
+        return usuariodao.findById(usuario.getId_usu()).orElse(null);
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
     }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
 }

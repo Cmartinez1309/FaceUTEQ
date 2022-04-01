@@ -36,7 +36,7 @@ public class UsuarioService implements UserDetails {
 
     @Override
     public String getPassword() {
-        return usuario.getContasena();
+        return usuario.getContrasena();
     }
 
     @Override

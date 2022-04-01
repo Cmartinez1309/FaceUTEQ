@@ -31,7 +31,6 @@ public class Comentarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_cmt;
-    private String coment_id;
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
@@ -46,15 +45,17 @@ public class Comentarios {
     public void prePersist() {
         fecha_cmt = new Date();
     }
-//Es foranea investegir como se relaciona
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_pb")
-    @NotNull
-    private Publicacion id_pb;
     //Es foranea investegir como se relaciona
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_usu")
     @NotNull
     private Usuario id_usu;
+//Es foranea investegir como se relaciona
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_pb")
+    @NotNull
+    private Publicacion id_pb;
+
+    private String coment_id;
 
 }

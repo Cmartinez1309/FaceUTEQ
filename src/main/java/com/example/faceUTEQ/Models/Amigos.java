@@ -26,16 +26,19 @@ public class Amigos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_amig;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_envia")
     @NotNull
-    private Long id_envia;
+    private Usuario id_envia;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_recibe")
     @NotNull
-    private Long id_recibe;
+    private Usuario id_recibe;
 
     @NotEmpty
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
     private String estatus;
-
 
 }

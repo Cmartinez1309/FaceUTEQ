@@ -34,7 +34,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = authentication.getCredentials().toString();
         List<Usuario> usuarios = iUsuarioDao.findByCorreo(username);
         if (usuarios.size() > 0) {
-            if (passwordEncoder.matches(password, usuarios.get(0).getContasena())) {
+            if (passwordEncoder.matches(password, usuarios.get(0).getContrasena())) {
                 List<GrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority(usuarios.get(0).getRole()));
                 return new UsernamePasswordAuthenticationToken(username, password, authorities);

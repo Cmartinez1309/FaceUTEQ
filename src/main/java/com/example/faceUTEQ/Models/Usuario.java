@@ -25,7 +25,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
+@Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Usuario {
 
     @Id
@@ -40,12 +40,52 @@ public class Usuario {
     @NotEmpty
     @NotNull(message = "Debes especificar la contrasena")
     @Size(min = 1, max = 50, message = "La contrasena debe medir entre 1 y 50")
-    private String contasena;
+    private String contrasena;
 
     @NotEmpty
     @NotNull(message = "Debes especificar el correo")
     @Size(min = 1, message = "El correo no debe ser nulo")
     private String role;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String nombre;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String carrera;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String prepa;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String empresa;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String nacionalidad;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String estado_civil;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String gustos;
+
+    @NotEmpty
+    @NotNull(message = "Debes especificar el correo")
+    @Size(min = 1, message = "El correo no debe ser nulo")
+    private String img_perfil;
 
     public long getId_usu() {
         return id_usu;
@@ -55,20 +95,20 @@ public class Usuario {
         return correo;
     }
 
-    public String getContasena() {
-        return contasena;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setId_usu(long Id_usu) {
-        this.id_usu = Id_usu;
+    public void setId_usu(long id_usu) {
+        this.id_usu = id_usu;
     }
 
-    public void setCorreo(String Correo) {
-        this.correo = Correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public void setContasena(String Contasena) {
-        this.contasena = Contasena;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public void setRole(String role) {
@@ -79,19 +119,100 @@ public class Usuario {
         return role;
     }
 
-    public Usuario(long id_usu, String correo, String contasena, String role) {
-        this.id_usu = id_usu;
-        this.correo = correo;
-        this.contasena = contasena;
-        this.role = role;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Usuario(String correo, String contasena, String role) {
-        this.correo = correo;
-        this.contasena = contasena;
-        this.role = role;
+    public String getNombre() {
+        return nombre;
     }
-    
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setPrepa(String prepa) {
+        this.prepa = prepa;
+    }
+
+    public String getPrepa() {
+        return prepa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setEstadoCivil(String estado_civil) {
+        this.estado_civil = estado_civil;
+    }
+
+    public String getEstadoCivil() {
+        return estado_civil;
+    }
+
+    public void setGustos(String gustos) {
+        this.gustos = gustos;
+    }
+
+    public String getGustos() {
+        return gustos;
+    }
+
+    public void setImgPerfil(String img_perfil) {
+        this.img_perfil = img_perfil;
+    }
+
+    public String getImgPerfil() {
+        return img_perfil;
+    }
+
+    public Usuario(long id_usu, String correo, String contrasena, String role, String nombre, String carrera, String prepa, String empresa, String nacionalidad, String estado_civil, String gustos, String img_perfil) {
+        this.id_usu = id_usu;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.role = role;
+        this.nombre = nombre;
+        this.carrera = carrera;
+        this.prepa = prepa;
+        this.empresa = empresa;
+        this.nacionalidad = nacionalidad;
+        this.estado_civil = estado_civil;
+        this.gustos = gustos;
+        this.img_perfil = img_perfil;
+
+    }
+
+    public Usuario(String correo, String contrasena, String role, String nombre, String carrera, String prepa, String empresa, String nacionalidad, String estado_civil, String gustos, String img_perfil) {
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.role = role;
+        this.nombre = nombre;
+        this.carrera = carrera;
+        this.prepa = prepa;
+        this.empresa = empresa;
+        this.nacionalidad = nacionalidad;
+        this.estado_civil = estado_civil;
+        this.gustos = gustos;
+        this.img_perfil = img_perfil;
+    }
+
     public Usuario() {
         super();
     }

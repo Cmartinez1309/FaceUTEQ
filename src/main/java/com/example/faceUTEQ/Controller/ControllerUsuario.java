@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author playe
  */
-/*
+ /*
 @Controller
 public class ControllerUsuario {
     
@@ -76,4 +76,145 @@ public class ControllerUsuario {
     }
     
 }
-*/
+ */
+
+ /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.example.faceUTEQ.Controller;
+
+import com.example.faceUTEQ.Models.Publicacion;
+import com.example.faceUTEQ.Models.Usuario;
+import com.example.faceUTEQ.Service.IUsuarioServiceImp;
+import java.util.List;
+import javax.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ *
+ * @author usuario
+ */
+@Controller
+@Slf4j
+public class ControllerUsuario {
+
+//@GetMapping("/admin")
+//    public String Usuario() {
+//        return "admin/usuario";
+//    }
+//     @RequestMapping("admin/")
+//    public String page(Model model) {
+//        model.addAttribute("nombre", "Hola desde Controlador Usuario");
+//        return "admin/usuario";
+//    }
+//   @RequestMapping("admin/")
+//    public String page(Model model) {
+//        model.addAttribute("nombre", "Hola desde Controlador Usuario");
+//        return "index";
+//    }
+//    @GetMapping("/admin/usuario")
+//    public String listaUsuario(Model model) {
+//        List<Usuario> usuario = usuarioService.listarUsuario();
+//        model.addAttribute("usuario", usuario);
+//        return "admin/usuario";
+//    }
+//  @RequestMapping("admin/")
+//    public String Usuario(Model model) {
+//        model.addAttribute("nombre", "Hola desde Controlador Publicacion");
+//       return "admin/usuario";
+//    }
+//@GetMapping("/admin")
+//    public String listaUsuario(Model model) {
+//        List<Usuario> usuario = usuarioService.listarUsuario();
+//        model.addAttribute("usuario", usuario);
+//        return "usuario";
+//    }
+//    @GetMapping("admin/agregarUsuario/")
+//    public String agregarUsuarioPage(Usuario usuario) {
+//        return "admin/modificarUsuario";
+//    }
+//
+//    @PostMapping("admin/agregarUsuario/")
+//    public String agregarUsuario(@Valid Usuario usuario, Errors error) {
+//        if (error.hasErrors()) {
+//            return "admin/modificarUsuario";
+//        }
+//        usuarioService.guardar(usuario);
+//        return "redirect:/admin/usuario/";
+//    }
+//
+//    @GetMapping("/admin/editarUsuario/{id_usu}")
+//    public String editarUsuario(Usuario usuario, Model model) {
+//        usuario = usuarioService.encontrarUsuario(usuario);
+//        model.addAttribute("usuario", usuario);
+//        return "admin/modificarUsuario";
+//    }
+//
+//    @GetMapping("admin/borrar/{idUsuario}")
+//    public String borrarUsuarios(Usuario usuario) {
+//        usuarioService.eliminar(usuario);
+//        return "admin/table-datatable";
+//    }
+    @RequestMapping("usuario/")
+    public String page(Model model) {
+        model.addAttribute("nombre", "Hola desde Controlador Inicio");
+        return "index";
+    }
+
+    @Autowired
+    private IUsuarioServiceImp usuarioService;
+
+//    @Autowired
+//    private ICategoriaService categoriaService;
+    @GetMapping("admin/")
+    public String listaProducto(Model model) {
+        List<Usuario> usuario = usuarioService.listarUsuario();
+        model.addAttribute("usuario", usuario);
+        return "admin/usuario";
+    }
+
+    @GetMapping("admin/agregarUsuario/")
+    public String agregarUsuarioPage(Usuario usuario, Model model) {
+//        List<Categoria> categoria = categoriaService.listarCategoria();
+//        model.addAttribute("categoria2", categoria);
+        return "admin/agregarUsuario";
+    }
+
+    @PostMapping("admin/agregarUsuario/")
+    public String agregarUsuario(@Valid Usuario usuario, Errors error, Model model) {
+        if (error.hasErrors()) {
+//            List<Categoria> categoria = categoriaService.listarCategoria();
+//            model.addAttribute("categoria2", categoria);
+            return "admin/agregarUsuario";
+        }
+        usuarioService.guardar(usuario);
+        return "redirect:/admin/usuario/";
+    }
+
+    @GetMapping("/admin/editarUsuario/{id_usu}")
+    public String editarUsuario(Usuario usuario, Model model) {
+        usuario = usuarioService.encontrarUsuario(usuario);
+        model.addAttribute("usuario", usuario);
+
+//        List<Categoria> categoria = categoriaService.listarCategoria();
+//        model.addAttribute("categoria", categoria);
+        return "admin/modificarUsuario";
+    }
+
+    @GetMapping("admin/borrar/{idUsuario}")
+    public String borrarUsuario(Usuario usuario) {
+        usuarioService.eliminar(usuario);
+        return "admin/table-datatable";
+    }
+
+}

@@ -56,7 +56,6 @@
                             <label class="form-label" for="Contenido_cmt">Imagen</label>
                             <input type="text" name="contenido_cmt" class="form-control" id="Contenido_cmt" />
                         </div>
-                        <input type="text" name="fecha_cmt" class="form-control" id="fecha_cmt" value="2022-03-30 16:15:28.000000"/>
                         <input type="text" name="id_pb" class="form-control" id="Id_pb"/>
                         <input type="text" name="id_usu" class="form-control" id="Id_usu"/>
                     </div>
@@ -128,12 +127,12 @@
                                                 id="reply"><span class="glyphicon glyphicon-share-alt"></span>
                                                 Reply</a>
                                             <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse"
-                                                href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2
+                                            th:href="'replyOne' + ${Publicacion.Id_pb}"><span class="glyphicon glyphicon-comment"></span> 2
                                                 comments</a>
                                         </div>
                                     </div>
                                     <!--  -->
-                                    <div class="collapse" id="replyOne">
+                                    <div class="collapse" th:id="'replyOne' + ${Publicacion.Id_pb}">
                                         <ul class="media-list">
                                             <li class="media media-replied">
                                                 <a class="pull-left" href="#">

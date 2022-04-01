@@ -50,7 +50,6 @@ public class Publicacion {
     @PreUpdate
     public void prePersist() {
         fecha_pb = new Date();
-        fecha_actializa = new Date();
     }
 
     @ManyToOne(optional = false)
@@ -65,6 +64,5 @@ public class Publicacion {
 
     private Nivel id_nivel;
 
-    private Date fecha_actializa;
 
 }
