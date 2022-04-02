@@ -1,0 +1,343 @@
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mazer Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" th:href="@{/src/assetsv2/assets/img/favicon/favicon.ico}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/fonts/boxicons.css}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/css/core.css}"
+        class="template-customizer-core-css}" />
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/css/theme-default.css}"
+        class="template-customizer-theme-css}" />
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/css/demo.css}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" th:href="@{/src/assetsv2/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script th:src="@{/src/assetsv2/assets/vendor/js/helpers.js}"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script th:src="@{/src/assetsv2/assets/js/config.js}"></script>
+    <link th:href="@{/src/styles.css}" rel="stylesheet" type="text/css" />
+</head>
+<!-- Small Modal -->
+<div class="modal fade" id="smallModal" tabindex="-" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true"> >
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row" method="post" data-th-action="@{/index/agregarComentarios/}">
+                    <div class="col mb-3">
+                        <label for="coment_id" class="form-label">Comentario</label>
+                        <input type="text" id="coment_id" name="coment_id" class="form-control"
+                            placeholder="Enter Name" />
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                            <label class="form-label" for="Contenido_cmt">Imagen</label>
+                            <input type="text" name="contenido_cmt" class="form-control" id="Contenido_cmt" />
+                        </div>
+                        <input type="text" name="id_pb" class="form-control" id="Id_pb" />
+                        <input type="text" name="id_usu" class="form-control" id="Id_usu" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1" id="logout">
+                <div class="page-header">
+                    <h3 class="reviews">Leave your comment</h3>
+                    <div class="logout">
+                        <a th:href="@{/logout}">
+                            <button class="btn btn-default btn-circle text-uppercase" type="button">
+                                logout
+                            </button>
+                        </a>
+                        <a th:href="@{/index/perfil/}">
+                            <button class="btn btn-default btn-circle text-uppercase" type="button">
+                                Perfil
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="comment-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab">
+                                <h4 class="reviews text-capitalize">Comments</h4>
+                            </a></li>
+                        <li><a href="#add-comment" role="tab" data-toggle="tab">
+                                <h4 class="reviews text-capitalize">Add comment</h4>
+                            </a></li>
+                        <li><a href="#account-settings" role="tab" data-toggle="tab">
+                                <h4 class="reviews text-capitalize">Account settings</h4>
+                            </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="comments-logout">
+                            <ul class="media-list">
+                                <li class="media" data-th-each="Publicacion:${Publicacion}">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle"
+                                            src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg"
+                                            alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="well well-lg">
+                                            <h4 class="media-heading text-uppercase reviews"
+                                                data-th-text="${Publicacion.id_usu.correo}">Marco </h4>
+                                            <ul class="media-date text-uppercase reviews list-inline"
+                                                data-th-text="${Publicacion.fecha_pb}">
+                                            </ul>
+                                            <p class="media-comment" data-th-text="${Publicacion.contenido}"></p>
+                                            <img class="media-object img-circle" data-th-src="${Publicacion.img_pb}"
+                                                alt="profile">
+                                            <!-- if -->
+                                            <div th:if="${Publicacion.id_nivel.nombre}==amigos">
+                                                <!-- if -->
+                                                <div data-th-each="amigos:${amigos}">
+                                                    <div
+                                                        th:if="${amigos.id_recibe.id_usu}==${Publicacion.id_usu.id_usu}">
+                                                        <!-- if -->
+                                                        <div th:if="${amigos.id_envia.id_usu}==${Usuario.id_usu}">
+                                                            <a class="btn btn-info btn-circle text-uppercase"
+                                                                th:onclick="|upload('${Publicacion.id_pb}','${Publicacion.id_usu.id_usu}')|"
+                                                                id="reply"><span
+                                                                    class="glyphicon glyphicon-share-alt"></span>
+                                                                Reply xd 2</a>
+                                                            <a class="btn btn-primary me-1" data-bs-toggle="collapse"
+                                                                role="button" aria-expanded="false"
+                                                                th:aria-controls="'#replyOne' + ${Publicacion.id_pb}"
+                                                                th:href="'#replyOne' + ${Publicacion.id_pb}"><span></span>
+                                                                2
+                                                                comments</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- if -->
+                                        <div th:if="${Publicacion.id_nivel.nombre}!=amigos">
+                                            <a class="btn btn-info btn-circle text-uppercase"
+                                                th:onclick="|upload('${Publicacion.id_pb}','${Publicacion.id_usu.id_usu}')|"
+                                                id="reply"><span class="glyphicon glyphicon-share-alt"></span>
+                                                Reply xd</a>
+                                            <a class="btn btn-primary me-1" data-bs-toggle="collapse" role="button"
+                                                aria-expanded="false"
+                                                th:aria-controls="'#replyOne' + ${Publicacion.id_pb}"
+                                                th:href="'#replyOne' + ${Publicacion.id_pb}"><span></span> 2
+                                                comments</a>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--  -->
+                        <div class="collapse" th:id="'replyOne' + ${Publicacion.id_pb}">
+                            <!-- if -->
+                            <div data-th-each="Comentarios:${Comentarios}"
+                                th:if="${Comentarios.id_pb.id_pb}==${Publicacion.id_pb}">
+                                <ul class="media-list">
+                                    <li class="media media-replied">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle"
+                                                src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg"
+                                                alt="profile">
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="well well-lg">
+                                                <h4 class="media-heading text-uppercase reviews"><span
+                                                        class="glyphicon glyphicon-share-alt"
+                                                        data-th-text="${Comentarios.Id_usu.Correo}"></span>
+                                                    The
+                                                    Hipster
+                                                </h4>
+                                                <ul class="media-date text-uppercase reviews list-inline">
+                                                </ul>
+                                                <p class="media-comment" data-th-text="${Comentarios.contenido_cmt}">
+                                                    Nice job Maria.
+                                                </p>
+
+                                                <p class="media-comment" data-th-text="${Comentarios.coment_id}">
+                                                    Nice job Maria.
+                                                </p>
+
+                                                <p class="media-comment" data-th-text="${Comentarios.fecha_cmt}">
+                                                    Nice job Maria.
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="add-comment">
+                        <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Comment</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="addComment" id="addComment"
+                                        rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="uploadMedia" class="col-sm-2 control-label">Upload media</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">http://</div>
+                                        <input type="text" class="form-control" name="uploadMedia" id="uploadMedia">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-success btn-circle text-uppercase" type="submit"
+                                        id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit
+                                        comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="account-settings">
+                        <form action="#" method="post" class="form-horizontal" id="accountSetForm" role="form">
+                            <div class="form-group">
+                                <label for="avatar" class="col-sm-2 control-label">Avatar</label>
+                                <div class="col-sm-10">
+                                    <div class="custom-input-file">
+                                        <label class="uploadPhoto">
+                                            Edit
+                                            <input type="file" class="change-avatar" name="avatar" id="avatar">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="Vilma palma">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nickName" class="col-sm-2 control-label">Nick name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nickName" id="nickName"
+                                        placeholder="Vilma">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="vilma@mail.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword" class="col-sm-2 control-label">New password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name="newPassword" id="newPassword">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword" class="col-sm-2 control-label">Confirm
+                                    password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name="confirmPassword"
+                                        id="confirmPassword">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-primary btn-circle text-uppercase" type="submit"
+                                        id="submit">Save changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header text-center">
+        <h3 class="reviews"><span class="glyphicon glyphicon-magnet"></span> Uicomments by <a
+                href="https://twitter.com/maridlcrmn">maridlcrmn</a></h3>
+    </div>
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script th:src="@{/src/assetsv2/assets/vendor/libs/jquery/jquery.js}"></script>
+    <script th:src="@{/src/assetsv2/assets/vendor/libs/popper/popper.js}"></script>
+    <script th:src="@{/src/assetsv2/assets/vendor/js/bootstrap.js}"></script>
+    <script th:src="@{/src/assetsv2/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
+
+    <script th:src="@{/src/assetsv2/assets/vendor/js/menu.js}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script th:src="@{/src/assetsv2/assets/js/main.js}"></script>
+
+    <!-- Page JS -->
+    <script th:src="@{/src/assetsv2/assets/js/ui-modals.js}"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@vant/touch-emulator"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pulltorefreshjs/0.1.22/index.umd.min.js"
+        integrity="sha512-djmgTiVR15A/7fON+ojDzFYrRsfVkzQZu07ZVb0zLC1OhA2iISP39Lzs05GqSKF0vPjkLzL5hBC+am6po7dKpA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type='text/javascript'>
+
+        PullToRefresh.init({
+            mainElement: 'body',
+            onRefresh: function () { window.location.reload(); }
+        });
+        function upload(datos, datos2) {
+            // var datos = datos.split("-");
+            //var Id_pb = datos[0];
+            //var Id_usu = datos[0];
+            $("#Id_pb").val(datos);
+            $("#Id_usu").val(datos2);
+            $('#smallModal').modal('show');
+
+        }
+    </script>
+    </div>
+</body>

@@ -4,7 +4,9 @@
  */
 package com.example.faceUTEQ.Controller;
 
+import com.example.faceUTEQ.Dao.IAmigosDao;
 import com.example.faceUTEQ.Dao.IUsuarioDao;
+import com.example.faceUTEQ.Models.Amigos;
 import com.example.faceUTEQ.Models.Comentarios;
 import com.example.faceUTEQ.Models.Publicacion;
 import com.example.faceUTEQ.Models.Usuario;
@@ -36,6 +38,8 @@ public class ControllerPublicacion {
     private IComentariosServiceImp comentariosServiceImp;
     @Autowired
     private IUsuarioDao iUsuarioDao;
+    @Autowired
+    private IAmigosServiceImp iAmigosServiceImp;
 
     // @Autowired
     // private ICategoriaService categoriaService;
@@ -53,7 +57,10 @@ public class ControllerPublicacion {
             String username = principal.toString();
             List<Usuario> usuarios = iUsuarioDao.findByCorreo(username);
             model.addAttribute("usuarios", usuarios);
+
         }
+        List<Amigos> amigos = iAmigosServiceImp.listarAmigos();
+        model.addAttribute("amigos", amigos);
         model.addAttribute("Publicacion", publicacion);
         model.addAttribute("Comentarios", comentarios);
         return "comentarios";
