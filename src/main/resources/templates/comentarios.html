@@ -123,20 +123,45 @@
                                             <p class="media-comment" data-th-text="${Publicacion.contenido}"></p>
                                             <img class="media-object img-circle" data-th-src="${Publicacion.img_pb}"
                                                 alt="profile">
-                                            <a class="btn btn-info btn-circle text-uppercase"
-                                                th:onclick="|upload('${Publicacion.id_pb}','${Publicacion.id_usu.id_usu}')|"
-                                                id="reply"><span class="glyphicon glyphicon-share-alt"></span>
-                                                Reply</a>
-                                            <a class="btn btn-primary me-1" data-bs-toggle="collapse" role="button"
-                                                aria-expanded="false"
-                                                th:aria-controls="'#replyOne' + ${Publicacion.id_pb}"
-                                                th:href="'#replyOne' + ${Publicacion.id_pb}"><span></span> 2
-                                                comments</a>
+                                            <!-- if -->
+                                            <div th:if="${Publicacion.id_nivel}=='amigos'">
+                                                <!-- if -->
+                                                <div th:if="${amigos.id_recibe.id_usu}==${Publicacion.id_usu.id_usu}">
+                                                    <!-- if -->
+                                                    <div th:if="${amigos.id_envia.id_usu}==${Usuario.id_usu}">
+                                                        <a class="btn btn-info btn-circle text-uppercase"
+                                                            th:onclick="|upload('${Publicacion.id_pb}','${Publicacion.id_usu.id_usu}')|"
+                                                            id="reply"><span
+                                                                class="glyphicon glyphicon-share-alt"></span>
+                                                            Reply xd 2</a>
+                                                        <a class="btn btn-primary me-1" data-bs-toggle="collapse"
+                                                            role="button" aria-expanded="false"
+                                                            th:aria-controls="'#replyOne' + ${Publicacion.id_pb}"
+                                                            th:href="'#replyOne' + ${Publicacion.id_pb}"><span></span> 2
+                                                            comments</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- if -->
+                                            <div th:if="${Publicacion.id_nivel}!='amigos'">
+                                                <a class="btn btn-info btn-circle text-uppercase"
+                                                    th:onclick="|upload('${Publicacion.id_pb}','${Publicacion.id_usu.id_usu}')|"
+                                                    id="reply"><span class="glyphicon glyphicon-share-alt"></span>
+                                                    Reply xd</a>
+                                                <a class="btn btn-primary me-1" data-bs-toggle="collapse" role="button"
+                                                    aria-expanded="false"
+                                                    th:aria-controls="'#replyOne' + ${Publicacion.id_pb}"
+                                                    th:href="'#replyOne' + ${Publicacion.id_pb}"><span></span> 2
+                                                    comments</a>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <!--  -->
                                     <div class="collapse" th:id="'replyOne' + ${Publicacion.id_pb}">
-                                        <div data-th-each="Comentarios:${Comentarios}" th:if="${Comentarios.id_pb.id_pb}==${Publicacion.id_pb}">
+                                        <!-- if -->
+                                        <div data-th-each="Comentarios:${Comentarios}"
+                                            th:if="${Comentarios.id_pb.id_pb}==${Publicacion.id_pb}">
                                             <ul class="media-list">
                                                 <li class="media media-replied">
                                                     <a class="pull-left" href="#">

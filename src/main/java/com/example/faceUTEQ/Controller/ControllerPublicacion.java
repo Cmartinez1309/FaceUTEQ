@@ -4,14 +4,18 @@
  */
 package com.example.faceUTEQ.Controller;
 
+import com.example.faceUTEQ.Dao.IUsuarioDao;
 import com.example.faceUTEQ.Models.Comentarios;
 import com.example.faceUTEQ.Models.Publicacion;
+import com.example.faceUTEQ.Models.Usuario;
 import com.example.faceUTEQ.Service.IAmigosServiceImp;
 import com.example.faceUTEQ.Service.IComentariosServiceImp;
 import com.example.faceUTEQ.Service.IPublicacionServiceImp;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -30,6 +34,8 @@ public class ControllerPublicacion {
     private IPublicacionServiceImp iPublicacionService;
     @Autowired
     private IComentariosServiceImp comentariosServiceImp;
+    @Autowired
+    private IUsuarioDao iUsuarioDao;
 
     // @Autowired
     // private ICategoriaService categoriaService;
@@ -37,6 +43,17 @@ public class ControllerPublicacion {
     public String listaPublicacion(Model model) {
         List<Publicacion> publicacion = iPublicacionService.listarPublicacion();
         List<Comentarios> comentarios = comentariosServiceImp.listarComentarios();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            List<Usuario> usuarios = iUsuarioDao.findByCorreo(username);
+            model.addAttribute("usuarios", usuarios);
+        } else {
+            String username = principal.toString();
+            List<Usuario> usuarios = iUsuarioDao.findByCorreo(username);
+            model.addAttribute("usuarios", usuarios);
+        }
         model.addAttribute("Publicacion", publicacion);
         model.addAttribute("Comentarios", comentarios);
         return "comentarios";
