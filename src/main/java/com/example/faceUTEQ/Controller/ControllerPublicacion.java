@@ -13,6 +13,9 @@ import com.example.faceUTEQ.Models.Usuario;
 import com.example.faceUTEQ.Service.IAmigosServiceImp;
 import com.example.faceUTEQ.Service.IComentariosServiceImp;
 import com.example.faceUTEQ.Service.IPublicacionServiceImp;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -73,12 +78,20 @@ public class ControllerPublicacion {
         return "index/agregarPublicacion";
     }
 
-    @PostMapping("index/agregarPublicacion/")
-    public String agregarPublicacion(@Valid Publicacion publicacion, Errors error, Model model) {
-        if (error.hasErrors()) {
-            //  List<Categoria> categoria = categoriaService.listarCategoria();
-            //  model.addAttribute("categoria2", categoria);
-            return "index/agregarPublicacion";
+    @PostMapping("/agregarPublicacion/")
+    public String agregarPublicacion(@Valid Publicacion publicacion, Errors error, Model model, @RequestParam("img_pb") MultipartFile imagen) {
+        if (!imagen.isEmpty()) {
+            Path direcionImagenes = Paths.get("src///web///images");
+            String rutaAbsoluta = direcionImagenes.toFile().getAbsolutePath();
+
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                publicacion.setImg_pb(imagen.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         iPublicacionService.guardar(publicacion);
         return "redirect:/index/publicacion/";

@@ -65,7 +65,7 @@
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" id="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
 
@@ -232,32 +232,53 @@
                                     </ul>
                                 </div>
                                 <div class="tab-pane fade" id="add-comment" role="tabpanel">
-                                    <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
-                                        <div class="form-group">
-                                            <label for="email" class="col-sm-2 control-label">Comment</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" name="addComment" id="addComment"
-                                                    rows="5"></textarea>
+                                    <form enctype="multipart/form-data" method="post" class="form-horizontal"
+                                        role="form" id="publicacionesxd">
+
+                                        <!-- id_pb, contenido, img_pb, fecha_pb, id_usu, id_nivel -->
+                                        <div class="mb-3">
+                                            <label class="form-label" for="contenido">contenido</label>
+                                            <div class="input-group input-group-merge">
+                                                <span id="carrera2" class="input-group-text">
+                                                    <i class="bx bx-user"></i>
+                                                </span>
+                                                <input type="text" class="form-control" name="contenido" id="Pcontenido"
+                                                    placeholder="contenidos" />
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="uploadMedia" class="col-sm-2 control-label">Upload media</label>
-                                            <div class="col-sm-10">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">http://</div>
-                                                    <input type="text" class="form-control" name="uploadMedia"
-                                                        id="uploadMedia">
-                                                </div>
+                                        <div class="mb-3">
+                                            <label for="img_pb" class="form-label">
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit">Coloca tu imagen</font>
+                                                </font>
+                                            </label>
+                                            <div class="input-group input-group-merge">
+                                                <input class="form-control" type="file" name="img_pb" id="Pimg_pb"
+                                                    placeholder="xd" />
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <button class="btn btn-success btn-circle text-uppercase" type="submit"
-                                                    id="submitComment"><span class="glyphicon glyphicon-send"></span>
-                                                    Summit
-                                                    comment</button>
+                                        <div class="mb-3">
+                                            <label for="id_nivel" class="form-label">Privacidad</label>
+                                            <select id="Pid_nivel" class="form-select" name="id_nivel">
+                                                <option>Privacidad</option>
+                                                <option value="1">Amigos</option>
+                                                <option value="2">Privado</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3" data-th-each="usuarios :${usuarios}">
+                                            <input type="text" class="form-control" name="id_usu" id="Pid_usu"
+                                                th:value="${usuarios.id_usu}" hidden />
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <button type="submit" class="btn btn-primary form-control"
+                                                    id="Psubmitv2">
+                                                    Send
+                                                </button>
+                                                <div id="content" class="col-lg-12"></div>
                                             </div>
                                         </div>
+
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="account-settings" role="tabpanel">
@@ -369,6 +390,40 @@
                 $('#smallModal').modal('show');
 
             }
+
+            $(document).ready(function () {
+
+                $("#publicacionesxd").submit(function (e) {
+                    e.preventDefault();
+                    //Añadimos la imagen de carga en el contenedor
+                    $('#submitv2').hide();
+                    $('#content').html('<div id="spinner" class="spinner-border spinner-border-lg text-success" role="status"><span class="visually-hidden">Loading...</span></div>');
+                    var form = $('#publicacionesxd')[0];
+
+                    var data = new FormData(form);
+
+                    $.ajax({
+                        type: "POST",
+                        enctype: 'multipart/form-data',
+                        url: 'http://localhost:8080/agregarPublicacion/',
+                        data: data,
+                        //http://api.jquery.com/jQuery.ajax/
+                        //http://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+                        processData: false, //prevent jQuery from automatically transforming the data into a query string
+                        contentType: false,
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            //Cargamos finalmente el contenido deseado
+                            $('#content').html('');
+                        },
+                        error: function (xhr, status) {
+                            $('#content').html('');                        }
+                    });
+                    return false;
+                });
+
+            });
         </script>
     </div>
 </body>

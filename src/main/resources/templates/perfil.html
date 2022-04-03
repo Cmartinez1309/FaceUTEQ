@@ -205,38 +205,7 @@
     <!-- Page JS -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js}"></script>
-    <!-- <script type="text/javascript">
-        $(document).ready(function () {
-
-            $("#perfil").submit(function (e) {
-                e.preventDefault();
-                //Añadimos la imagen de carga en el contenedor
-                $('#submit').hide();
-                $('#content').html('<div class="spinner-border spinner-border-lg text-success" role="status"><span class="visually-hidden">Loading...</span></div>');
-                var form = $('#perfil')[0];
-
-                var data = new FormData(form);
-
-                $.ajax({
-                    type: "POST",
-                    enctype: 'multipart/form-data',
-                    url: 'http://localhost:8080/agregarPerfil/',
-                    data: data,
-                    //http://api.jquery.com/jQuery.ajax/
-                    //http://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
-                    processData: false, //prevent jQuery from automatically transforming the data into a query string
-                    contentType: false,
-                    cache: false,
-                    timeout: 600000,
-                    success: function (data) {
-                        //Cargamos finalmente el contenido deseado
-                        $('#content').fadeIn(1000).html(data);
-                    }
-                });
-                return false;
-            });
-        });
-    </script>-->
+    
 </body>
 
 </html>
