@@ -85,6 +85,7 @@ public class ControllerUsuario {
  */
 package com.example.faceUTEQ.Controller;
 
+import com.example.faceUTEQ.Dao.IUsuarioDao;
 import com.example.faceUTEQ.Models.Publicacion;
 import com.example.faceUTEQ.Models.Usuario;
 import com.example.faceUTEQ.Service.IUsuarioServiceImp;
@@ -93,6 +94,8 @@ import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -173,9 +176,11 @@ public class ControllerUsuario {
 
     @Autowired
     private IUsuarioServiceImp usuarioService;
-
+    @Autowired
+    private IUsuarioDao iUsuarioDao;
 //    @Autowired
 //    private ICategoriaService categoriaService;
+
     @GetMapping("admin/")
     public String listaProducto(Model model) {
         List<Usuario> usuario = usuarioService.listarUsuario();
@@ -217,4 +222,53 @@ public class ControllerUsuario {
         return "admin/table-datatable";
     }
 
+    @PostMapping("/recuperarContrasena/")
+    public String busacurUsuario(Usuario usuario, Model model) {
+        List<Usuario> usuarios = iUsuarioDao.findByCorreoAndNacionalidadAndNombre(usuario.getCorreo(), usuario.getNacionalidad(), usuario.getNombre());
+
+        if (usuarios.size() >0) {
+           model.addAttribute("usuario", usuario);
+            return "perfil";
+        }
+
+        return "redirect:/login/";
+    }
+    /*
+    @PostMapping("/recuperarContrasena/")
+    public String busacurUsuario(Usuario usuario, Model model) {
+        List<Usuario> usuarios = iUsuarioDao.findByCorreo(usuario.getCorreo());
+        String dbEstadoCivil = usuarios.get(0).getEstado_civil().toString();
+        String dbNacionalidad = usuarios.get(0).getNacionalidad().toString();
+        String usuarioEstadoCivil = usuario.getEstado_civil().toString();
+        String usuarioNacionalidad = usuario.getNacionalidad().toString();
+
+        if (dbEstadoCivil == usuarioEstadoCivil ) {
+            return "hi";
+        }
+
+        return ""+dbEstadoCivil+dbNacionalidad+usuarioEstadoCivil+usuarioNacionalidad+"";
+    }
+     */
+ /*
+       @PostMapping("agregarPerfil/")
+    public String agregarPerfil(@Valid Perfil perfil, Errors error, Model model, @RequestParam("img_perfil") MultipartFile imagen) {
+        if (!imagen.isEmpty()) {
+            Path direcionImagenes = Paths.get("src///web///images");
+            String rutaAbsoluta = direcionImagenes.toFile().getAbsolutePath();
+
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                perfil.setImg_perfil(imagen.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        String mensajae = "xd";
+
+        iPerfilService.guardar(perfil);
+        return mensajae;
+    }
+     */
 }

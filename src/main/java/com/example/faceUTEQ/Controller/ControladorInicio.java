@@ -47,4 +47,8 @@ public class ControladorInicio {
     public String Login() {
          return "auth-login";
     }
+     @GetMapping("/recuperacion")
+    public String recuperacion() {
+         return "auth-register";
+    }
 }
