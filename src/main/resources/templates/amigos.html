@@ -62,15 +62,15 @@
                     <form class="row" method="post" data-th-action="@{/index/agregarSolicituudv2/}">
                         <div class="row g-2">
                             <div class="mb-3">
-                                <label for="id_envia" class="form-label">Correos</label>
-                                <select id="Pid_nivel" class="form-select" name="id_envia">
+                                <label for="id_recibe" class="form-label">Correos</label>
+                                <select id="Pid_nivel" class="form-select" name="id_recibe">
                                     <option data-th-each="usuariosv2:${usuariosv2}" data-th-text="${usuariosv2.correo}"
                                         data-th-value="${usuariosv2.id_usu}">
                                     </option>
                                 </select>
                             </div>
                         </div>
-                        <input type="text" name="id_recibe" class="form-control" id="id_recibe" hidden/>
+                        <input type="text" name="id_envia" class="form-control" id="id_envia" hidden/>
                         <input type="text" name="estatus" class="form-control" id="estatus" value="0" hidden/>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -208,7 +208,7 @@
             return false;
         }
         function uploadv2(dato) {
-            $("#id_recibe").val(dato);
+            $("#id_envia").val(dato);
             $('#smallModal').modal('show');
 
             /*$("#publicacionesxdxdxd").submit(function (e) {
