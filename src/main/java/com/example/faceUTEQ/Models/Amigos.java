@@ -40,5 +40,7 @@ public class Amigos {
     @NotNull(message = "No debe ser nulo")
     @Size(min = 1, message = "No debe ser nulo")
     private String estatus;
+    
+    private boolean accountVerified;
 
 }

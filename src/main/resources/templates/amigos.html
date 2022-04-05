@@ -59,19 +59,29 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row" method="post" data-th-action="@{/index/agregarSolicituudv2/}">
+                    <form class="row" method="post" data-th-action="@{/index/agregarSolicituudv2/} "
+                        data-th-each="usuarios:${usuarios}">
                         <div class="row g-2">
                             <div class="mb-3">
                                 <label for="id_recibe" class="form-label">Correos</label>
                                 <select id="Pid_nivel" class="form-select" name="id_recibe">
-                                    <option data-th-each="usuariosv2:${usuariosv2}" data-th-text="${usuariosv2.correo}"
-                                        data-th-value="${usuariosv2.id_usu}">
-                                    </option>
+                                    <div data-th-each="usuariosv2:${usuariosv2}">
+                                        <div data-th-each="amigos:${amigos}">
+                                            <div data-th:if="${amigos.id_recibe.id_usu}==${usuarios.id_usu}">
+                                                <p data-th-text="${amigos.id_recibe.id_usu}"></p>
+                                                <div data-th:if="${amigos.id_envia.id_usu}!=${usuariosv2.id_usu}">
+                                                    <option data-th-text="${usuariosv2.correo}"
+                                                        data-th-value="${usuariosv2.id_usu}">
+                                                    </option>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </select>
                             </div>
                         </div>
-                        <input type="text" name="id_envia" class="form-control" id="id_envia" hidden/>
-                        <input type="text" name="estatus" class="form-control" id="estatus" value="0" hidden/>
+                        <input type="text" name="id_envia" class="form-control" id="id_envia" hidden />
+                        <input type="text" name="estatus" class="form-control" id="estatus" value="0" hidden />
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
